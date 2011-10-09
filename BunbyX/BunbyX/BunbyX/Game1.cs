@@ -18,7 +18,8 @@ namespace BunbyX
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        BunbyX mBunbyX;
+        Sprite mBackground;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -33,8 +34,14 @@ namespace BunbyX
         /// </summary>
         protected override void Initialize()
         {
+            //Change the resolution to 800x600
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.ApplyChanges();
             // TODO: Add your initialization logic here
-
+            mBunbyX = new BunbyX(125, 350);
+            mBackground = new Sprite();
+            mBackground.Scale = 2.0f;
             base.Initialize();
         }
 
@@ -48,6 +55,8 @@ namespace BunbyX
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            mBunbyX.LoadContent(this.Content);
+            mBackground.LoadContent(this.Content,"Background01");
         }
 
         /// <summary>
@@ -71,6 +80,7 @@ namespace BunbyX
                 this.Exit();
 
             // TODO: Add your update logic here
+            mBunbyX.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -84,6 +94,10 @@ namespace BunbyX
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            mBackground.Draw(this.spriteBatch);
+            mBunbyX.Draw(this.spriteBatch);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

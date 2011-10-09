@@ -1,0 +1,8 @@
+C:\Users\Ghost Of PQ\Desktop\GameANiaque\BunbyX\BunbyX\BunbyX\bin\x86\Debug\BunbyX.exe
+C:\Users\Ghost Of PQ\Desktop\GameANiaque\BunbyX\BunbyX\BunbyX\bin\x86\Debug\BunbyX.pdb
+C:\Users\Ghost Of PQ\Desktop\GameANiaque\BunbyX\BunbyX\BunbyX\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Ghost Of PQ\Desktop\GameANiaque\BunbyX\BunbyX\BunbyX\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Ghost Of PQ\Desktop\GameANiaque\BunbyX\BunbyX\BunbyX\obj\x86\Debug\BunbyX.exe
+C:\Users\Ghost Of PQ\Desktop\GameANiaque\BunbyX\BunbyX\BunbyX\obj\x86\Debug\BunbyX.pdb
+C:\Users\Ghost Of PQ\Desktop\GameANiaque\BunbyX\BunbyX\BunbyX\bin\x86\Debug\Content\lapin_test.xnb
+C:\Users\Ghost Of PQ\Desktop\GameANiaque\BunbyX\BunbyX\BunbyX\bin\x86\Debug\Content\Background01.xnb
