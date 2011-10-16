@@ -16,6 +16,7 @@ namespace BunbyX
         const int MOVE_DOWN = 1;
         const int MOVE_LEFT = -1;
         const int MOVE_RIGHT = 1;
+        const int BASE_SPEED = 300;
         const string BUNNY_ASSETNAME = "lapin_test";
         enum State
         {
@@ -55,6 +56,7 @@ namespace BunbyX
             KeyboardState aCurrentKeyboardState = Keyboard.GetState();
 
             UpdateMovement(aCurrentKeyboardState);
+            UpdateJump();
             mPreviousKeyboardState = aCurrentKeyboardState;
 
             base.Update(theGameTime, Bunny_Speed, Bunny_Direction);
@@ -62,7 +64,49 @@ namespace BunbyX
 
         private void UpdateMovement(KeyboardState aCurrentKeyboardState)
         {
-            
+            if (Bunny_Current_State == State.Waiting || Bunny_Current_State == State.Running)
+            {
+                Bunny_Speed = Vector2.Zero;
+                Bunny_Direction = Vector2.Zero;
+
+                if (aCurrentKeyboardState.IsKeyDown(Keys.Left) == true)
+                {
+                    Bunny_Speed.X = Bunny_Speed_coef * BASE_SPEED;
+                    Bunny_Direction.X = MOVE_LEFT;
+                }
+                else if (aCurrentKeyboardState.IsKeyDown(Keys.Right) == true)
+                {
+                    Bunny_Speed.X = Bunny_Speed_coef * BASE_SPEED;
+                    Bunny_Direction.X = MOVE_RIGHT;
+                }
+                if (aCurrentKeyboardState.IsKeyDown(Keys.Up) == true && mPreviousKeyboardState.IsKeyDown(Keys.Up) == false)
+                {
+                    Bunny_Current_State = State.Jumping;
+                    Bunny_Direction.Y = MOVE_UP;
+                    Bunny_Speed = new Vector2(Bunny_Speed.X, 500);
+                }
+                //if (aCurrentKeyboardState.IsKeyDown(Keys.Up) == true)
+                //{
+                //    mSpeed.Y = WIZARD_SPEED;
+                //    mDirection.Y = MOVE_UP;
+                //}
+                //else if (aCurrentKeyboardState.IsKeyDown(Keys.Down) == true)
+                //{
+                //    mSpeed.Y = WIZARD_SPEED;
+                //    mDirection.Y = MOVE_DOWN;
+                //}
+            }
+
+        }
+        private void UpdateJump()
+        {
+            if (Bunny_Current_State == State.Jumping)
+            {
+                if (Bunny_Direction.Y == MOVE_UP)
+                {
+                    Bunny_Speed = new Vector2(Bunny_Speed.X, Bunny_Speed.Y - 10);
+                }
+            }
         }
 
     }
